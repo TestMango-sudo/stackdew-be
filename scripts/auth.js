@@ -3,11 +3,23 @@ const logout = document.querySelector('#logout')
 const loginForm = document.querySelector('#login-form')
 
 auth.onAuthStateChanged(user => {
+    let currentUser;
     if (user) {
         //console.log('User logged in:', user)
         //db.collection('guides').get().then(snapshot=>{
-         db.collection('guides').onSnapshot(snapshot => {
-            setupUI(user)
+        db.collection('users').get().then(snapshot => {
+            const tempdata = snapshot.docs
+            tempdata.forEach(doc => {
+                const userObject = doc.data()
+                if(userObject.user_id === user.email) {
+                console.log(userObject)
+                currentUser = userObject
+                }
+
+            })
+
+            // console.log(snapshot, user)
+            setupUI(currentUser)
         })
     } else{
         //console.log('user logged out')
@@ -28,28 +40,19 @@ signupForm.addEventListener('submit', (e) => {
        const modal = document.querySelector('#modal-signup');
        M.Modal.getInstance(modal).close();
         signupForm.reset() 
-        //setupUserDB(email)
+        setupUserDB(email)
     })
-    // function setupUserDB(email) { 
-    // console.log("Creating Database");
-    // new Promise(resolve => setTimeout(resolve, 3000)); 
-    // db.collection('users').add({
-    //     user_id: email,
-    //     inventory: {
-    //         devling1: {
-    //             'devling-name': 'Laura',
-    //             'front-end': Math.random(1 - 3),
-    //             'back-end': Math.random(1, 3),
-    //             'dev-ego': Math.random(1, 3),
-    //             'emotional': Math.random(1, 3),
-    //             'google-skills': Math.random(1, 3)
-    //         }
-    //     },
-    //     lecturer: Mitch
-    // }).then(() => { 
-    //     window.alert('Account and Database created')
-    // })
-})
+    function setupUserDB(email) { 
+    console.log("Creating Database");
+    new Promise(resolve => setTimeout(resolve, 3000)); 
+    db.collection('users').add({
+        user_id: email,
+        inventory: {devlings: [0]},
+        lecturer: "Rose"
+    }).then(() => { 
+        window.alert('Account and Database created')
+    })
+}})
 
 //login
 loginForm.addEventListener('submit', (e) => {

@@ -7,7 +7,7 @@ const accountDetails = document.querySelector('.account-details')
 
 const setupUI = (user) => {
   if (user){
-    const html = `<div>Logged in as ${user.email}</div>`;
+    const html = `<div>Logged in as ${user.user_id}</div><div>Chosen Lecturer: ${user.lecturer}</div><div>Inventory: ${user.inventory}</div>`;
     accountDetails.innerHTML = html;
     //toggle navbar ui
     loggedInLinks.forEach(item => item.style.display = 'block');
