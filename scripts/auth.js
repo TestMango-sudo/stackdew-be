@@ -1,7 +1,7 @@
 const signupForm = document.querySelector("#signup-form")
 const logout = document.querySelector('#logout')
 const loginForm = document.querySelector('#login-form')
-
+const addDevling = document.querySelector("#add-devling")
 auth.onAuthStateChanged(user => {
     let currentUser;
     if (user) {
@@ -47,7 +47,7 @@ signupForm.addEventListener('submit', (e) => {
     new Promise(resolve => setTimeout(resolve, 3000)); 
     db.collection('users').add({
         user_id: email,
-        inventory: {devlings: [0]},
+        inventory: [{name: "Dummy Devling"}],
         lecturer: "Rose"
     }).then(() => { 
         window.alert('Account and Database created')
@@ -75,3 +75,16 @@ logout.addEventListener("click", (e) => {
     auth.signOut()
 })
 
+addDevling.addEventListener("click", (e) => {
+    e.preventDefault()
+    const data = {'devling-name': 'Laura',
+                'front-end': Math.random(1, 3),
+                'back-end': Math.random(1, 3),
+                'dev-ego': Math.random(1, 3),
+                'emotional': Math.random(1, 3),
+                'google-skills': Math.random(1, 3),
+                isPlanted: false,
+                isGrown: false,
+            }
+    db.collection()
+})
