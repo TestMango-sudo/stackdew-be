@@ -7,8 +7,17 @@ const accountDetails = document.querySelector('.account-details')
 
 const setupUI = (user) => {
   if (user){
-    const html = `<div>Logged in as ${user.user_id}</div><div>Chosen Lecturer: ${user.lecturer}</div><div>Inventory: ${user.inventory}</div>`;
-    accountDetails.innerHTML = html;
+    db.collection('users').doc(user.uid).get().then(doc => {
+      inventory = doc.data().inventory
+      const html = 
+      `<div>Logged in: ${doc.data().user_id}</div>
+      <div>Your Lecturer Name is ${doc.data().lecturer}</div>
+      <div>slot 1: ${doc.data().inventory[0].slot1}, </div>
+      `;
+      accountDetails.innerHTML = html;
+      this.scene.start("GameScene");
+    })
+    
     //toggle navbar ui
     loggedInLinks.forEach(item => item.style.display = 'block');
     loggedOutLinks.forEach(item => {item.style.display = 'none'});
