@@ -1,9 +1,3 @@
-import Phaser from "phaser";
-
-import LoginScene from "./scenes/login-scene";
-import GameScene from "./scenes/game-scene";
-import { documentId } from "firebase/firestore";
-
 const config = {
   type: Phaser.AUTO,
   width: 1024,
