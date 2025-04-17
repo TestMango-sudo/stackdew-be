@@ -83,6 +83,7 @@ loginForm.addEventListener("submit", (e) => {
 
 logout.addEventListener("click", (e) => {
   e.preventDefault();
+  currentUser = null;
   auth.signOut();
 });
 
