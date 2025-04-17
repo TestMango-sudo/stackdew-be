@@ -4,31 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
     <title>Document</title>
 </head>
 <body class="grey-lighten">
     <!-- NAVBAR -->
-        <nav class="z-depth-0 grey lighten-4">
+        <nav class="z-depth-0 purple lighten-4">
             <div id="nav-wrapper container">
             <a href="#" class="brand-logo">
                 <img src="images/logo.png" style="width: 74px; margin-top: 0px;">
             </a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down"> 
+                    <li><a href="#"" style="display: flex; font-family: 'Honk', system-ui; float: left; margin-right: 100px; font-size: 50px;" id="nav-title"> Stack Dew Valley</h2></li>
                 <li class="logged-in" style="display: none;">
-                    <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
+                    <a href="#" class="black-text modal-trigger" data-target="modal-account">Account</a>
                 </li>
                 <li class="logged-in" style="display: none;">
-                    <a href="#" class="grey-text modal-trigger" data-target="#">About</a>
+                    <a href="#" class="black-text modal-trigger" data-target="#">About</a>
                 </li>
                 <li class="logged-in" style="display: none;">
-                    <a href="#" class="grey-text" id="logout">Logout</a>
+                    <a href="#" class="black-text" id="logout">Logout</a>
                 </li>
                 <li class="logged-out" style="display: none;">
-                    <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+                    <a href="#" class="black-text modal-trigger" data-target="modal-login">Login</a>
                 </li>
                 <li class="logged-out" style="display: none;">
-                    <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+                    <a href="#" class="black-text modal-trigger" data-target="modal-signup">Sign up</a>
                 </li>
                 </span>
             </ul>
@@ -88,14 +92,12 @@
     <div id="game-area" class="game-square"></div>
 
     <div>
-        <button id="add-devling">Add 1 Devling</button>
+        <button id="update-inventory">update inventory</button>
     </div>
     <div>
-        <button id="get-inventory-slot">get slot</button>
+        <button id="get-inventory">Get inventory</button>
     </div>
-    <div>
-        <button id="update-devling">update</button>
-    </div>
+
 
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>

@@ -1,9 +1,8 @@
 const signupForm = document.querySelector("#signup-form");
 const logout = document.querySelector("#logout");
 const loginForm = document.querySelector("#login-form");
-const addDevling = document.querySelector("#add-devling");
-const getInventorySlot = document.querySelector("#get-inventory-slot");
-const updateDevling = document.getElementById("update-devling");
+const updateInventory = document.getElementById("update-inventory");
+const getInventory = document.getElementById("get-inventory");
 
 let currentUser;
 let userDB;
@@ -87,47 +86,30 @@ logout.addEventListener("click", (e) => {
   auth.signOut();
 });
 
-addDevling.addEventListener("click", (e) => {
+updateInventory.addEventListener("click", (e) => {
   e.preventDefault();
-  const data = {
-    "devling-name": "Laura",
-    "front-end": Math.random(1, 3),
-    "back-end": Math.random(1, 3),
-    "dev-ego": Math.random(1, 3),
-    emotional: Math.random(1, 3),
-    "google-skills": Math.random(1, 3),
-    isPlanted: false,
-    isGrown: false,
-  };
-  db.collection("users").doc(currentUser.uid).update({
-    "inventory.0.slot1": "blue",
-    // "inventory.4.slot4": {
-    //   devlingName: "Dave",
-    //   frontEnd: 1,
-    //   backEnd: 1,
-    //   devEgo: 1,
-    //   emotional: 1,
-    //   googleSkills: 1,
-    // },
-  });
+  db.collection("users")
+    .doc(currentUser.uid)
+    .update({
+      inventory: userInventory,
+    })
+    .then(() => {
+      console.log("updated Inventory");
+    });
 });
 
-getInventorySlot.addEventListener("click", (e) => {
+getInventory.addEventListener("click", (e) => {
+  console.log(userInventory, "<<before Mod");
+  e.preventDefault();
   db.collection("users")
     .doc(currentUser.uid)
     .get()
     .then((doc) => {
-      inventoryData = doc.data().inventory;
-      console.log(
-        `Devling Name: ${inventoryData[4].slot4.devlingName}, Back-End Skills:${inventoryData[4].slot4.backEnd}`
-      );
+      let newData = JSON.stringify(doc.data());
+      console.log(newData);
+      console.log(doc.data());
+      userInventory = doc.data().inventory;
+      console.log(userInventory, "<<< after mod");
     });
-});
-updateDevling.addEventListener("click", (e) => {
-  const increment = db.FieldValue.increment(1);
-
-  // const updateDB = db.collection("users").doc(currentUser.uid);
-  db.collection("users").doc(currentUser.uid).update({
-    "inventory.4.slot4.backEnd": increment,
-  });
+  console.log(userDB);
 });
