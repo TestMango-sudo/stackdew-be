@@ -85,6 +85,7 @@ logout.addEventListener("click", (e) => {
   e.preventDefault();
   currentUser = null;
   auth.signOut();
+  window.location.reload()
 });
 
 updateInventory.addEventListener("click", (e) => {

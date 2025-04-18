@@ -7,6 +7,8 @@ const devling1 = {
   "google-skills": Math.round(Math.random() * 3),
 };
 
+
+
 //Database rules:
 //match logged in user in user doc in users collection
 // match /users/{userId} {
