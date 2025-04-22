@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.88.2/dist/phaser.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
-    <title>Document</title>
+    <script src="./scenes/game1.js"></script>
+    <script src="scripts/game.js" ></script>
+    <title>Stack Dew Valley</title>
 </head>
 <body class="grey-lighten">
     <!-- NAVBAR -->
@@ -22,9 +25,10 @@
                 <li class="logged-in" style="display: none;">
                     <a href="#" class="black-text modal-trigger" data-target="modal-account">Account</a>
                 </li>
-                <li class="logged-in" style="display: none;">
-                    <a href="#" class="black-text modal-trigger" data-target="#">About</a>
+                <li class="logged-out" style="display: block;">
+                    <a href="#" class="black-text modal-trigger" data-target="modal-about">About</a>
                 </li>
+
                 <li class="logged-in" style="display: none;">
                     <a href="#" class="black-text" id="logout">Logout</a>
                 </li>
@@ -55,7 +59,7 @@
                     <input type="text" id="lecturer-name" required />
                     <label for="lecturer-name">Choose a name for your lecturer</label>
                 </div>
-                <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+                <button class="btn purple darken-2 z-depth-0">Sign up</button>
                 <p class="error pink-text center-align"></p>
             </form>
         </div>
@@ -74,7 +78,7 @@
                     <input type="password" id="login-password" required />
                     <label for="login-password">Your password</label>
                 </div>
-                <button class="btn yellow darken-2 z-depth-0">Login</button>
+                <button class="btn purple darken-2 z-depth-0">Login</button>
                 <p class="error pink-text center-align"></p>
             </form>
         </div>
@@ -85,17 +89,44 @@
         <div class="modal-content center-align">
             <h4>Account details</h4><br />
             <div class="account-details"></div>
+            <div class="modal-footer">
+                <a href="#" class="modal-close btn purple darken-2 z-depth-0">Close</a>
+            </div>
         </div>
+    </div>
+
+    <!-- ABOUT MODAL -->
+    <div id="modal-about" class="modal">
+        <div class="modal-content center-align">
+            <h3>About the Team</h4><br />
+            <h4>Hackstreet Boys/Girls</h3>
+            <img src="images/devshackstreet.png" alt="Hackstreet Boys and Girls"/>
+            <h5>Ken'Terria Reeves, Chris Askew, Sophie Thompson, Dean Wilson, Tymur Holovko, Paul McDonagh</h5>
+            <a href="#" class="modal-close btn purple darken-2 z-depth-0">Close</a>
+        </div>
+        <!-- <div class="modal-footer">
+        </div> -->
     </div>
     
     <!-- GAME MODAL -->
-    <div id="game-area" class="game-square"></div>
+    <div id="game-container">
+        <div class="modal-content">
+            <h4 id="game-title" style="display: flex;">Please log in to play the game.</h4><br />        
+        </div>
+    </div>
+    
 
     <div>
         <button id="update-inventory">update inventory</button>
     </div>
     <div>
         <button id="get-inventory">Get inventory</button>
+    </div>
+    <div>
+        <button id="show-inventory">Show inventory</button>
+    </div>
+    <div>
+        <button id="clear-inventory">clear inventory</button>
     </div>
 
 
@@ -105,9 +136,12 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
     <script src="scripts/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="scripts/auth.js"></script>
+    
     <script src="scripts/index.js"></script>
-    <script src="scenes/game1.js"></script>
-    <script src="phaser-config.js"></SCript>
+    <script src="scripts/auth.js" type="module"></script>
+    
+   
+    <!-- <script src="phaser-config.js"></SCript> -->
+        <!-- <script type="module" src="../src/main.js"></script> -->
 </body>
 </html>

@@ -1,0 +1,27 @@
+body{
+    background-image: url('../images/background.jpeg');
+    background-size:cover;
+    background-position:center;
+    background-repeat: no-repeat;
+}
+
+#game-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    width: 70vw;
+    margin: auto;
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+div#modal-about.modal.open {
+    display: block;
+    opacity: 1;
+    background-color: lightpink;
+}
