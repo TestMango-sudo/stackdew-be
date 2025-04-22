@@ -92,6 +92,7 @@ logout.addEventListener("click", (e) => {
   e.preventDefault();
   currentUser = undefined;
   auth.signOut();
+  window.location.reload()
   changeGameArea();
 });
 
@@ -167,7 +168,7 @@ clearInventory.addEventListener("click", (e) => {
 function changeGameArea() {
   if (currentUser) {
     // gameTitle.textContent = `Welcome to StackDew, ${currentUser.email}`;
-
+    gameTitle.style.display = 'none'
     startGame();
   } else {
     closeGame();
