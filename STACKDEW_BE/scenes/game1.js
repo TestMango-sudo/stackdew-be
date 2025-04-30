@@ -34,7 +34,7 @@ class GameScene extends Phaser.Scene {
     this.keys = this.input.keyboard.addKeys("W,A,S,D");
   }
   update() {
-    const speed = 150;
+    const speed = 250;
     const body = this.player.body;
     body.setVelocity(0);
 
